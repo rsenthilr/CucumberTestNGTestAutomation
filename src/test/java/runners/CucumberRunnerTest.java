@@ -8,9 +8,9 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
 
-		features = "classpath:scenarios", tags = "@Login or @ForgotPassword", glue = {
+		features = "classpath:features", tags = "@Login or @ForgotPassword", glue = {
 				"driverfactory", "hooks", "pagefactory", "runners",
-				"stepdef"}, plugin = {"pretty",
+				"stepdefinitions"}, plugin = {"pretty",
 						"json:target/cucumber-reports/cucumber.json",
 						"html:target/cucumber-reports/cucucmber-report.html",
 						"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}, monochrome = true)

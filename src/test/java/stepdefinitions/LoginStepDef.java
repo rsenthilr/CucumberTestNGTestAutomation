@@ -1,4 +1,4 @@
-package stepdef;
+package stepdefinitions;
 
 import org.testng.Assert;
 
