@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public final class WebDriverFactory {
 
@@ -15,17 +16,19 @@ public final class WebDriverFactory {
 
 	public static void setDriver() {
 
-		String browser = System.getProperty("browser", "chrome");
-		if (browser.equalsIgnoreCase("chrome")) {
-			//System.setProperty("webdriver.chrome.driver", "E:\\Drivers\\chromedriver.exe");
-			ChromeOptions options = new ChromeOptions();
-			options.addArguments("--remote-allow-origins=*");
-			driver.set(new ChromeDriver(options));
+		String browser = System.getProperty("browser", "edge");
+		if (browser.equalsIgnoreCase("firefox")) {
+			driver.set(new FirefoxDriver());
 			getDriver().manage().window().maximize();
 			getDriver().manage().deleteAllCookies();
 		} else if (browser.equalsIgnoreCase("edge")) {
-			//System.setProperty("webdriver.edge.driver", "E:\\Drivers\\msedgedriver.exe");
 			driver.set(new EdgeDriver());
+			getDriver().manage().window().maximize();
+			getDriver().manage().deleteAllCookies();
+		} else {
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--remote-allow-origins=*");
+			driver.set(new ChromeDriver(options));
 			getDriver().manage().window().maximize();
 			getDriver().manage().deleteAllCookies();
 		}
